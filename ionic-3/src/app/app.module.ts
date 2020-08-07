@@ -1,26 +1,27 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+import { BrowserModule } from "@angular/platform-browser";
+import { ErrorHandler, NgModule } from "@angular/core";
+import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
+import { SplashScreen } from "@ionic-native/splash-screen";
+import { StatusBar } from "@ionic-native/status-bar";
 
-import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
-import { RegisterPage } from '../pages/register/register';
-import { MenuPage } from '../pages/menu/menu';
-import { DetailsPage } from '../pages/details/details';
-import { NewTaskModalPage } from '../pages/new-task-modal/new-task-modal';
+import { MyApp } from "./app.component";
+import { LoginPage } from "../pages/login/login";
+import { RegisterPage } from "../pages/register/register";
+import { MenuPage } from "../pages/menu/menu";
+import { DetailsPage } from "../pages/details/details";
+import { NewTaskModalPage } from "../pages/new-task-modal/new-task-modal";
 
-import { ImagePicker } from '@ionic-native/image-picker';
+import { ImagePicker } from "@ionic-native/image-picker";
 
-import { FirebaseService } from '../pages/services/firebase.service';
-import { AuthService } from '../pages/services/auth.service';
+import { FirebaseService } from "../pages/services/firebase.service";
+import { AuthService } from "../pages/services/auth.service";
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireStorageModule } from 'angularfire2/storage';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { environment } from '../environment/environment';
+import { AngularFireModule } from "angularfire2";
+import { AngularFirestoreModule } from "angularfire2/firestore";
+import { AngularFireStorageModule } from "angularfire2/storage";
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { environment } from "../environment/environment";
+import { ServicesCartProvider } from "../providers/services-cart/services-cart";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { environment } from '../environment/environment';
     RegisterPage,
     MenuPage,
     NewTaskModalPage,
-    DetailsPage
+    DetailsPage,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,7 @@ import { environment } from '../environment/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,7 +47,7 @@ import { environment } from '../environment/environment';
     RegisterPage,
     MenuPage,
     NewTaskModalPage,
-    DetailsPage
+    DetailsPage,
   ],
   providers: [
     StatusBar,
@@ -54,7 +55,9 @@ import { environment } from '../environment/environment';
     ImagePicker,
     FirebaseService,
     AuthService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ServicesCartProvider,
+    ServicesCartProvider,
+  ],
 })
 export class AppModule {}
