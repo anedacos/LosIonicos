@@ -64,21 +64,6 @@ export class HomePage implements OnInit {
     node.addEventListener("animationend", handleAnimationEnd);
   }
 
-  // items: Array<any>;
-
-  // constructor(
-  //   public loadingCtrl: LoadingController,
-  //   private authService: AuthService,
-  //   private router: Router,
-  //   private route: ActivatedRoute
-  // ) {}
-
-  // ngOnInit() {
-  //   if (this.route && this.route.data) {
-  //     this.getData();
-  //   }
-  // }
-
   async getData() {
     const loading = await this.loadingCtrl.create({
       message: "Please wait...",

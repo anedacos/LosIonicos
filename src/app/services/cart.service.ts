@@ -53,7 +53,7 @@ export class CartService {
   }
 
   decreaseProduct(product) {
-    for (let [index, p] of this.cart.entries()) {
+    for (let [index, p] of Array.from(this.cart.entries())) {
       if (p.id === product.id) {
         p.amount -= 1;
         if (p.amount === 0) {
@@ -65,7 +65,7 @@ export class CartService {
   }
 
   removeProduct(product) {
-    for (let [index, p] of this.cart.entries()) {
+    for (let [index, p] of Array.from(this.cart.entries())) {
       if (p.id === product.id) {
         this.cartItemCount.next(this.cartItemCount.value - p.amount);
         this.cart.splice(index, 1);
