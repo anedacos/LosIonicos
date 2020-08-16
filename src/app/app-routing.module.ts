@@ -18,6 +18,11 @@ const routes: Routes = [
     loadChildren: "./new-task/new-task.module#NewTaskPageModule",
   },
   { path: "cart-modal", loadChildren: "./pages/cart-modal/cart-modal.module" },
+  {
+    path: "checkout",
+    loadChildren:"./checkout/checkout.module#CheckoutModule",
+  }
+  
   // { path: 'new-task-modal', loadChildren: './new-task-modal/new-task-modal.module#NewTaskModalPageModule' },
 ];
 

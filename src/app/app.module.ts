@@ -24,6 +24,7 @@ import { environment } from "../environments/environment";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 // import { NewTaskModalPage } from './new-task-modal/new-task-modal.page';
 import { CartModalPageModule } from "./pages/cart-modal/cart-modal.module";
+// import {CheckoutModule} from "./checkout/checkout.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +41,7 @@ import { CartModalPageModule } from "./pages/cart-modal/cart-modal.module";
     AngularFireAuthModule, // imports firebase/auth
     AngularFireStorageModule, // imports firebase/storage
     CartModalPageModule,
+    // CheckoutModule
   ],
   providers: [
     StatusBar,
