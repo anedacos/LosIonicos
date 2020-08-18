@@ -42,6 +42,7 @@ export class CartModalPage implements OnInit {
     this.modalCtrl.dismiss();
   }
   checkout() {
+    this.cartService.uploadCartSession(this.cart);
     this.router.navigate(['/', 'checkout']);
   }
 }

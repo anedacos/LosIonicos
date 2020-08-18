@@ -20,7 +20,7 @@ export class CartService {
   ];
 
   private cart = [];
-
+  
   private cartItemCount = new BehaviorSubject(0);
 
   constructor() {}
@@ -48,6 +48,7 @@ export class CartService {
     }
     if (!added) {
       this.cart.push(product);
+
     }
     this.cartItemCount.next(this.cartItemCount.value + 1);
   }
@@ -71,5 +72,9 @@ export class CartService {
         this.cart.splice(index, 1);
       }
     }
+  }
+
+  uploadCartSession(cart){
+    localStorage.setItem("carrito",JSON.stringify(cart));
   }
 }
