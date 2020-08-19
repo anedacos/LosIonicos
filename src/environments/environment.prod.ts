@@ -1,11 +1,13 @@
 export const environment = {
   production: true,
   firebase : {
-   apiKey: "YOUR_CREDENTIALS_HERE",
-   authDomain: "YOUR_CREDENTIALS_HERE",
-   databaseURL: "YOUR_CREDENTIALS_HERE",
-   projectId: "YOUR_CREDENTIALS_HERE",
-   storageBucket: "YOUR_CREDENTIALS_HERE",
-   messagingSenderId: "YOUR_CREDENTIALS_HERE"
- }
+    apiKey: "AIzaSyBrQvf_AZFp1FcYEIQY2-idrLLHHbhdT2c",
+    authDomain: "soft-engineering-project-88f88.firebaseapp.com",
+    databaseURL: "https://soft-engineering-project-88f88.firebaseio.com",
+    projectId: "soft-engineering-project-88f88",
+    storageBucket: "soft-engineering-project-88f88.appspot.com",
+    messagingSenderId: "596267149196",
+    appId: "1:596267149196:web:fc1b1d0daf9373391f58a9",
+    measurementId: "G-NN5V96BL42"
+  }
 };
