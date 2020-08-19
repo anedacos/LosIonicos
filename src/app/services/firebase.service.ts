@@ -22,7 +22,6 @@ export class FirebaseService {
         if(currentUser){
           //this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('tasks').snapshotChanges();
           this.snapshotChangesSubscription = this.afs.collection('productos').snapshotChanges();
-          
           resolve(this.snapshotChangesSubscription);
         }
       })

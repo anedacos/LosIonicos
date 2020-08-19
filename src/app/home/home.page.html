@@ -16,7 +16,7 @@
     <ion-list>
       <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
         <ion-thumbnail *ngIf="(item.payload.doc.data().stock > 0)" slot="start">
-          <!--<img [src]="item.payload.doc.data().image" />-->
+          <img [src]="item.payload.doc.data().image" />
         </ion-thumbnail>
         <ion-label *ngIf="(item.payload.doc.data().stock > 0)">{{item.payload.doc.data().nombre}}</ion-label>
         <ion-button *ngIf="(item.payload.doc.data().stock > 0)" fill="clear" slot="end">
