@@ -115,4 +115,74 @@ export class FirebaseService {
       })
     })
   }
+
+//CRUD Pedido
+createPedido(value){
+  return new Promise<any>((resolve, reject) => {
+    let currentUser = firebase.auth().currentUser;
+    this.afs.collection('people').doc(currentUser.uid).collection('pedidos').add({
+      title: value.title,
+      description: value.description,
+      image: value.image,
+      nombre: value.nombre,
+      direccion : value.direccion,
+      productos : value.productos,
+      estado : value.estado
+    })
+    .then(
+      res => resolve(res),
+      err => reject(err)
+    )
+  })
+}
+
+getPedidos(){
+  return new Promise<any>((resolve, reject) => {
+    this.afAuth.user.subscribe(currentUser => {
+      if(currentUser){
+        this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('pedidos').snapshotChanges();
+        resolve(this.snapshotChangesSubscription);
+      }
+    })
+  })
+}
+
+getPedido(pedidoId){
+  return new Promise<any>((resolve, reject) => {
+    this.afAuth.user.subscribe(currentUser => {
+      if(currentUser){
+        this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/pedidos/' + pedidoId).valueChanges()
+        .subscribe(snapshots => {
+          resolve(snapshots);
+        }, err => {
+          reject(err)
+        })
+      }
+    })
+  });
+}
+
+updatePedido(pedidoKey, value){
+  return new Promise<any>((resolve, reject) => {
+    let currentUser = firebase.auth().currentUser;
+    this.afs.collection('people').doc(currentUser.uid).collection('pedidos').doc(pedidoKey).set(value)
+    .then(
+      res => resolve(res),
+      err => reject(err)
+    )
+  })
+}
+
+
+deletePedido(pedidoKey){
+  return new Promise<any>((resolve, reject) => {
+    let currentUser = firebase.auth().currentUser;
+    this.afs.collection('people').doc(currentUser.uid).collection('pedidos').doc(pedidoKey).delete()
+    .then(
+      res => resolve(res),
+      err => reject(err)
+    )
+  })
+}
+
 }
