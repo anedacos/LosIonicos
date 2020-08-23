@@ -124,7 +124,7 @@ createPedido(value){
       image: value.image,
       nombre: value.nombre,
       direccion : value.direccion,
-      productos : value.productos,
+      total : value.total,
       estado : value.estado
     })
     .then(

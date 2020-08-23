@@ -22,12 +22,20 @@
   </div>
   <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
     <ion-item>
-      <ion-label position="floating" color="primary">Title</ion-label>
-      <ion-input type="text" formControlName="title"></ion-input>
+      <ion-label position="floating" color="primary">nombre</ion-label>
+      <ion-input type="text" formControlName="nombre"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating" color="primary">Description</ion-label>
-      <ion-input type="text" formControlName="description"></ion-input>
+      <ion-label position="floating" color="primary">direccion</ion-label>
+      <ion-input type="text" formControlName="direccion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">total</ion-label>
+      <ion-input type="text" formControlName="total"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">estado</ion-label>
+      <ion-input type="text" formControlName="estado"></ion-input>
     </ion-item>
     <ion-button class="submit-button" expand="block" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
   </form>
