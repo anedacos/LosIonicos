@@ -121,8 +121,6 @@ createPedido(value){
   return new Promise<any>((resolve, reject) => {
     let currentUser = firebase.auth().currentUser;
     this.afs.collection('people').doc(currentUser.uid).collection('pedidos').add({
-      title: value.title,
-      description: value.description,
       image: value.image,
       nombre: value.nombre,
       direccion : value.direccion,
