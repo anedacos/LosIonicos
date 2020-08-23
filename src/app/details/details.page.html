@@ -37,6 +37,14 @@
       <ion-label position="floating" color="primary">estado</ion-label>
       <ion-input type="text" formControlName="estado"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>Estado del pedido</ion-label>
+      <ion-select formControlName="estado" placeholder="Estado del pedido">
+      <ion-select-option value="Preparando">Preparando</ion-select-option>
+      <ion-select-option value="Enviado">Enviado</ion-select-option>
+      <ion-select-option value="Entregado">Entregado</ion-select-option>
+      </ion-select>
+    </ion-item>
     <ion-button class="submit-button" expand="block" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
   </form>
   <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>

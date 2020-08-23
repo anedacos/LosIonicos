@@ -43,21 +43,26 @@ export class DetailsPage implements OnInit {
      }
     })
     this.validations_form = this.formBuilder.group({
-      title: new FormControl(this.item.title, Validators.required),
-      description: new FormControl(this.item.description, Validators.required)
+      nombre: new FormControl(this.item.nombre, Validators.required),
+      direccion: new FormControl(this.item.direccion, Validators.required),
+      total: new FormControl(this.item.total, Validators.required),
+      estado: new FormControl(this.item.estado, Validators.required)
+
     });
   }
 
   onSubmit(value){
     let data = {
-      title: value.title,
-      description: value.description,
+      nombre: value.nombre,
+      direccion: value.direccion,
+      total:value.total,
+      estado:value.estado,
       image: this.image
     }
-    this.firebaseService.updateTask(this.item.id,data)
+    this.firebaseService.updatePedido(this.item.id,data)
     .then(
       res => {
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/pedidos"]);
       }
     )
   }
@@ -76,10 +81,10 @@ export class DetailsPage implements OnInit {
         {
           text: 'Yes',
           handler: () => {
-            this.firebaseService.deleteTask(this.item.id)
+            this.firebaseService.deletePedido(this.item.id)
             .then(
               res => {
-                this.router.navigate(["/home"]);
+                this.router.navigate(["/pedidos"]);
               },
               err => console.log(err)
             )
