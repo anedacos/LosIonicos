@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { PedidosPageRoutingModule } from './pedidos-routing.module';
 
 import { PedidosPage } from './pedidos.page';
+import { PedidosResolver } from './pedidos.resolver';
 
 const routes: Routes = [
   {
