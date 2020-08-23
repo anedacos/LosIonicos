@@ -21,7 +21,12 @@ const routes: Routes = [
   {
     path: "checkout",
     loadChildren:"./checkout/checkout.module#CheckoutModule",
+  },
+  {
+    path: 'pedidos',
+    loadChildren: "./pedidos/pedidos.module#PedidosPageModule"
   }
+
   
   // { path: 'new-task-modal', loadChildren: './new-task-modal/new-task-modal.module#NewTaskModalPageModule' },
 ];
