@@ -1,14 +1,11 @@
-
+<!-- 
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-</head>
-
-
 <h2>Distribuidora Matute</h2>
-<!-- <p>Resize the browser window to see the effect. When the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other.</p> -->
+
 <div class="row">
   <div class="col-75">
     <div class="container">
@@ -27,10 +24,7 @@
             <input type="text" id="city" name="city" placeholder="Guayaquil">
 
             <div class="row">
-            <!-- <div class="col-50">
-              <label for="state">State</label>
-              <input type="text" id="state" name="state" placeholder="NY">
-            </div> -->
+          
           
               <div class="col-50">
                 <label for="zip">Zip</label>
@@ -39,33 +33,7 @@
             </div>
           </div>
 
-          <!-- <div class="col-50">
-            <h3>Payment</h3>
-            <label for="fname">Tarjetas Aceptadas</label>
-            <div class="icon-container">
-              <i class="fa fa-cc-visa" style="color:navy;"></i>
-              <i class="fa fa-cc-amex" style="color:blue;"></i>
-              <i class="fa fa-cc-mastercard" style="color:red;"></i>
-              <i class="fa fa-cc-discover" style="color:orange;"></i>
-            </div>
-            <label for="cname">Nombre en la tarjeta</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-            <label for="ccnum">Numero de la tarjeta</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <label for="expmonth">Mes de expiracíon</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-            <div class="row">
-              <div class="col-50">
-                <label for="expyear">Año de expiracíon</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2018">
-              </div>
-              <div class="col-50">
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352">
-              </div>
-            </div>
-          </div> -->
-          
+      
         </div>
         <label>
           <input type="checkbox" checked="checked" name="sameadr"> La direccíon de entrega es la misma que la de facturacíon
@@ -95,5 +63,64 @@
   </div>
 </div>
 
+ -->
 
+ <ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ingrese sus datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<!-- <ion-content class="list-mini-content" padding>
 
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombre del producto a comprar</ion-label>
+      <ion-label>Precio</ion-label>
+
+    </ion-item>
+    <ion-item *ngFor="let item of carrito" >
+     
+      <ion-label>{{item.name}}</ion-label>
+      <ion-label>{{item.price}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content> -->
+<ion-content padding>
+  
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombre del producto a comprar</ion-label>
+      <ion-label>Precio</ion-label>
+      <ion-label>Cantidad</ion-label>
+
+    </ion-item>
+    <ion-item *ngFor="let item of carrito" >
+      <ion-icon name="checkbox"></ion-icon>
+      <ion-label>{{item.name}}</ion-label>
+      <ion-badge color="secondary">{{item.price}}</ion-badge>
+      <ion-label> </ion-label>
+      <ion-badge color="success">{{item.amount}}</ion-badge>
+      <ion-label> </ion-label>
+      
+    </ion-item>
+  </ion-list>
+  <ion-text color="dark">El total de la factura es: ${{total}} USD </ion-text>
+  
+  <ion-title color="dark">Ingrese datos de facturacion</ion-title>
+  <form [formGroup]="validations_form" (ngSubmit)="realizarCompra(validations_form.value)">
+    <ion-item>
+      <ion-label position="floating" color="primary">Nombres completos</ion-label>
+      <ion-input type="text" formControlName="nombres"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Direccion</ion-label>
+      <ion-input type="text" formControlName="direccion"></ion-input>
+    </ion-item>
+    <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Realizar compra</ion-button>
+  </form>
+
+  
+</ion-content>
