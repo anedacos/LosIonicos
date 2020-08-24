@@ -13,6 +13,8 @@ export class CheckoutComponent implements OnInit {
   carrito: Product[] = [];
   productos: Product[] =[];
   total=5;
+  direccion: string;
+  nombres: string;
   constructor(
     public router: Router,
     private firebaseService: FirebaseService,
@@ -26,16 +28,17 @@ export class CheckoutComponent implements OnInit {
 
   obtenerCarrito(){
     this.carrito=JSON.parse(localStorage.getItem("carrito"));
-
-    this.total= this.productos.reduce((i, j) => i + j.price * j.amount, 0);
+    
+    this.total= this.carrito.reduce((i, j) => i + j.price * j.amount, 0);
+    console.log(this.total);
     return this.carrito
   }
   realizarCompra(){
     //Debo obtener estos datos desde un form de ionic como en new task
     let data = {
-      nombre: "Nombre de prueba",
-      direccion: "Direccion de prueba",
-      total:123.21,
+      nombre: this.nombres,
+      direccion: this.direccion,
+      total: this.total,
       estado:"Preparando",
       image:  "./assets/imgs/default_image.jpg"
     }
