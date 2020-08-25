@@ -1,41 +1,91 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['/new-task']">
+      <!-- <ion-button [routerLink]="['/new-task']">
         <ion-icon slot="icon-only" name="add"></ion-icon>
       </ion-button>
       <ion-button [routerLink]="['/pedidos']">
         <ion-icon slot="icon-only" name="basket"></ion-icon>
-      </ion-button>
+      </ion-button> -->
     </ion-buttons>
     <ion-title>Distribuidora Matute</ion-title>
   </ion-toolbar>
 </ion-header>
 
-
 <!--Presentar productos que tengan stock en la tienda-->
 
 <ion-content *ngIf="items" class="list-mini-content" padding>
-  <div *ngIf="items.length > 0" class="list-mini">
-    <ion-list>
-      <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
-        <ion-thumbnail *ngIf="(item.payload.doc.data().stock > 0)" slot="start">
-          <img [src]="item.payload.doc.data().image" />
-        </ion-thumbnail>
-        <ion-label *ngIf="(item.payload.doc.data().stock > 0)">{{item.payload.doc.data().nombre}}</ion-label>
-        <ion-button *ngIf="(item.payload.doc.data().stock > 0)" fill="clear" slot="end">
-          {{item.payload.doc.data().descripcion}}</ion-button>
-      </ion-item>
-    </ion-list>
-  </div>
-  <!--Fin de mostrar productos-->
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCart()" #cart>
+      <div class="cart-length">{{cartItemCount | async}}</div>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
-  <div *ngIf="items.length == 0" class="empty-list">
-    Please create your first task.
-  </div>
+  <ion-row>
+    <ion-col>
+      <div *ngIf="items.length > 0" class="list-mini">
+        <ion-list>
+          <ion-card>
+            <ion-item
+              *ngFor="let item of items"
+              [routerLink]="['/details', item.payload.doc.id]"
+            >
+              <ion-thumbnail
+                *ngIf="(item.payload.doc.data().stock > 0)"
+                slot="start"
+              >
+                <img [src]="item.payload.doc.data().image" />
+              </ion-thumbnail>
+              <ion-card-header>
+                <ion-card-title *ngIf="(item.payload.doc.data().stock > 0)">
+                  {{item.payload.doc.data().nombre}}
+                </ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                <ion-row class="ion-align-items-center">
+                  <ion-col size="8">
+                    <ion-label color="secondary">
+                      <b
+                        >{{ item.payload.doc.data().precio | currency:'USD'
+                        }}</b
+                      >
+                    </ion-label>
+                  </ion-col>
+                  <ion-col size="4" class="ion-text-right">
+                    <ion-button
+                      fill="clear"
+                      (click)="addToCart(item.payload.doc.data())"
+                    >
+                      <!-- <ion-icon name="add"></ion-icon> -->
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-item>
+          </ion-card>
+        </ion-list>
+      </div>
+    </ion-col>
+    <ion-list>
+      <ion-card *ngFor="let p of products">
+        <ion-card-content>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="4" class="ion-text-right">
+              <ion-button class="round" fill="clear" (click)="addToCart(p)">
+                <ion-icon name="add"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+    <ion-col> </ion-col>
+  </ion-row>
 </ion-content>
 
-<ion-content>
+<!-- <ion-content>
   <ion-fab vertical="top" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openCart()" #cart>
       <div class="cart-length">{{cartItemCount | async}}</div>
@@ -45,18 +95,8 @@
 
   <ion-list>
     <ion-card *ngFor="let p of products">
-      <ion-card-header>
-        <ion-card-title>
-          {{p.name}}
-        </ion-card-title>
-      </ion-card-header>
       <ion-card-content>
         <ion-row class="ion-align-items-center">
-          <ion-col size="8">
-            <ion-label color="secondary">
-              <b>{{ p.price | currency:'USD' }}</b>
-            </ion-label>
-          </ion-col>
           <ion-col size="4" class="ion-text-right">
             <ion-button fill="clear" (click)="addToCart(p)">
               <ion-icon name="add"></ion-icon>
@@ -66,7 +106,7 @@
       </ion-card-content>
     </ion-card>
   </ion-list>
-</ion-content>
+</ion-content> -->
 
 <ion-footer (click)="logout()">
   <ion-toolbar color="medium">

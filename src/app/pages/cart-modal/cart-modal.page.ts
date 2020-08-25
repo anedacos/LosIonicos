@@ -2,7 +2,7 @@ import { CartService } from "../../services/cart.service";
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../../services/cart.service";
 import { ModalController } from "@ionic/angular";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-cart-modal",
@@ -43,6 +43,7 @@ export class CartModalPage implements OnInit {
   }
   checkout() {
     this.cartService.uploadCartSession(this.cart);
-    this.router.navigate(['/', 'checkout']);
+    this.router.navigate(["/", "checkout"]);
+    this.modalCtrl.dismiss();
   }
 }
