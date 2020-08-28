@@ -25,10 +25,11 @@ jobs:
           ionic build
             
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@v1.5.0
+        uses: w9jds/firebase-action@v1.1.0
         with:
-          args: deploy --only hosting --project af2test-f289d
+          args: deploy --only hosting
         env:
           # Set token in GitHub settings
           # project -> settings -> secrets -> add token
           FIREBASE_TOKEN: 05FTQ1fB8gDEQCgYIARAAGAUSNwF-L9Irt5crXQeKQ_AlKsVgwrtBpsV3hHK9fgnGeeY-BC9eyVzlzDbW0YRhuC3zZxzdk5AvfvM
+          FIREBASE_PROJECT: soft-engineering-project-88f88
