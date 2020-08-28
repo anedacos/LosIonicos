@@ -36,4 +36,3 @@ jobs:
           # Set token in GitHub settings
           # project -> settings -> secrets -> add token
           FIREBASE_TOKEN: 05FTQ1fB8gDEQCgYIARAAGAUSNwF-L9Irt5crXQeKQ_AlKsVgwrtBpsV3hHK9fgnGeeY-BC9eyVzlzDbW0YRhuC3zZxzdk5AvfvM
-          FIREBASE_PROJECT: Soft Engineering Project
