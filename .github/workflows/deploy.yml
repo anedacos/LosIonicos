@@ -24,6 +24,10 @@ jobs:
         run: |
           ionic build
             
+      - name: selec proyect
+        run: |
+          firebase use --add
+          
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@v1.1.0
         with:
