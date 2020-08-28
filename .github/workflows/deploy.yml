@@ -22,7 +22,11 @@ jobs:
       
       - name: build ionic
         run: |
-          ionic build  
+          ionic build
+      
+      - name: select proyect
+        run: |
+          firebase use default (ionic-4-firebase-crud-demo)
         
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@v1.5.0
