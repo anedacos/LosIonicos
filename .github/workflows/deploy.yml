@@ -1,0 +1,34 @@
+name: deploy-to-firebase-ionic-app
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  deploy-to-firebase-hosting:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@master
+        
+      - name: Use coturiv/setup-ionic
+        uses: coturiv/setup-ionic@v1.0.0
+        
+        # we have to install app-scripts
+      - run: npm i -D -E @ionic/app-scripts
+      
+      - name: build ionic
+        run: |
+          ionic build  
+        
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@v1.1.0
+        with:
+          args: deploy --only hosting
+        env:
+          # Set token in GitHub settings
+          # project -> settings -> secrets -> add token
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
