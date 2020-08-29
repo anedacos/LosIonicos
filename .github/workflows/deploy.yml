@@ -27,13 +27,13 @@ jobs:
       - name: selec firebase proyect
         uses: w9jds/firebase-action@master
         with:
-          args: projects:list
+          args: use soft-engineering-project-88f88
         env:
           FIREBASE_TOKEN: 1//05lBAkod8AzWICgYIARAAGAUSNwF-L9IraThjLApNW7pGceLXhfkhZt9NYSfL7TSMk7ocYRxbXDLEneiwv4_r_NJf4RQT02SFmqc
           
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@v1.5.0
         with:
-          args: use soft-engineering-project-88f88
+          args: deploy --only hosting
         env:
           FIREBASE_TOKEN: 1//05lBAkod8AzWICgYIARAAGAUSNwF-L9IraThjLApNW7pGceLXhfkhZt9NYSfL7TSMk7ocYRxbXDLEneiwv4_r_NJf4RQT02SFmqc
