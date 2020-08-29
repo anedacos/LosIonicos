@@ -27,7 +27,7 @@ jobs:
       - name: selec firebase proyect
         uses: w9jds/firebase-action@master
         with:
-          args: use soft-engineering-project-88f88
+          args: use default
         env:
           FIREBASE_TOKEN: 05FTQ1fB8gDEQCgYIARAAGAUSNwF-L9Irt5crXQeKQ_AlKsVgwrtBpsV3hHK9fgnGeeY-BC9eyVzlzDbW0YRhuC3zZxzdk5AvfvM
           
