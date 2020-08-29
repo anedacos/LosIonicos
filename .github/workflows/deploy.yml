@@ -34,6 +34,6 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@v1.5.0
         with:
-          args: firebase use soft-engineering-project-88f88
+          args: use soft-engineering-project-88f88
         env:
           FIREBASE_TOKEN: 1//05lBAkod8AzWICgYIARAAGAUSNwF-L9IraThjLApNW7pGceLXhfkhZt9NYSfL7TSMk7ocYRxbXDLEneiwv4_r_NJf4RQT02SFmqc
