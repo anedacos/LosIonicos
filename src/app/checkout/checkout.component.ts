@@ -48,7 +48,7 @@ export class CheckoutComponent implements OnInit {
       direccion: value.direccion,
       total: this.total ,
       estado:"Preparando",
-      image:  "./assets/imgs/default_image.jpg"
+      image:  "./assets/imgs/buy-cart.png"
     }
     this.firebaseService.createPedido(data)
     .then(
