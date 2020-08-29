@@ -29,11 +29,11 @@ jobs:
         with:
           args: projects:list
         env:
-          FIREBASE_TOKEN: 05FTQ1fB8gDEQCgYIARAAGAUSNwF-L9Irt5crXQeKQ_AlKsVgwrtBpsV3hHK9fgnGeeY-BC9eyVzlzDbW0YRhuC3zZxzdk5AvfvM
+          FIREBASE_TOKEN: 1//05lBAkod8AzWICgYIARAAGAUSNwF-L9IraThjLApNW7pGceLXhfkhZt9NYSfL7TSMk7ocYRxbXDLEneiwv4_r_NJf4RQT02SFmqc
           
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@v1.1.0
+        uses: w9jds/firebase-action@v1.5.0
         with:
           args: deploy --only hosting
         env:
-          FIREBASE_TOKEN: 05FTQ1fB8gDEQCgYIARAAGAUSNwF-L9Irt5crXQeKQ_AlKsVgwrtBpsV3hHK9fgnGeeY-BC9eyVzlzDbW0YRhuC3zZxzdk5AvfvM
+          FIREBASE_TOKEN: 1//05lBAkod8AzWICgYIARAAGAUSNwF-L9IraThjLApNW7pGceLXhfkhZt9NYSfL7TSMk7ocYRxbXDLEneiwv4_r_NJf4RQT02SFmqc
