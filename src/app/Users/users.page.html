@@ -1,0 +1,106 @@
+
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Usuarios</ion-title>
+    
+   
+    <ion-button slot="end">
+      <ion-button (click)="create()" >
+      <ion-icon name="add-circle" slot="icon-only"></ion-icon>
+        Añadir usuario
+    </ion-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+<ion-row class= "header-row">
+  <ion-col size="2" *ngIf="bulkEdit">
+    select
+</ion-col>
+
+<ion-col class="col-text" size="6" size-md="4" size-lg="2" >
+Nombre
+</ion-col>
+<ion-col id="t1"  class="col-text" size="2" class="ion-hide-md-down">
+Apellido
+  </ion-col>
+<ion-col class="col-text" size="2">
+  cedula
+</ion-col>
+<ion-col class="col-text" size="2">
+ Telefono
+</ion-col>
+
+
+<ion-col  class="col-text" size="2">
+ Editar
+</ion-col>
+
+<ion-col id="t" size="2" class="ion-hide-md-down">
+  Eliminar
+</ion-col>
+</ion-row>
+
+<ion-row *ngFor="let row of rows; let i = index">
+
+  <ion-col size="2" *ngIf="bulkEdit">
+  
+</ion-col>
+
+<ion-col  id= {{i}} size="6" size-md="4" size-lg="2" >
+{{row.name}}
+</ion-col>
+<ion-col size="2" class="ion-hide-md-down">
+{{row.apellido}}
+  </ion-col>
+<ion-col size="2">
+  {{row.cedula}}
+</ion-col>
+<ion-col size="2">
+  {{row.telefono}}
+</ion-col>
+<ion-col id = {{i}} size="2" class="ion-hide-md-down">
+  <ion-button 
+size="small" (click)="edit(row,i)" color="light" fill=light> 
+<ion-icon name="create" slot="icon-only"></ion-icon>
+</ion-button>
+</ion-col>
+
+<ion-col size="2">
+<ion-button 
+size="small" (click)="delete(row,i)" color="light" fill=light> 
+<ion-icon name="trash" slot="icon-only"></ion-icon>
+</ion-button>
+</ion-col>
+
+
+
+
+</ion-row>
+
+
+
+ <!-- <ngx-datatable    class="fullscreen" [ngClass]="tablestyle" [rows]="temp"  [columnMode]="'force'" [sortType]="'multi'" [reorderable]="true">
+    <ngx-datatable-column  name="Name"></ngx-datatable-column>
+    <ngx-datatable-column name="Apellido"></ngx-datatable-column>
+    <ngx-datatable-column name="cedula"></ngx-datatable-column>
+    <ngx-datatable-column name="id" [resizeable]="false">
+      <ng-template ngx-datatable-header-template>
+        
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <button ion-button small outline color="light" (click)="delete(row)">Inactivar</button>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="id" [resizeable]="false">
+      <ng-template ngx-datatable-header-template>
+        
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <button ion-button small outline color="light" (click)="edit(row)">Editar</button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>-->
+</ion-content>

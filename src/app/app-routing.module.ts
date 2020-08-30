@@ -25,7 +25,9 @@ const routes: Routes = [
   {
     path: 'pedidos',
     loadChildren: "./pedidos/pedidos.module#PedidosPageModule"
-  }
+  },
+  {path: 'datausers', loadChildren: './Users/users.module#UsersPageModule'},
+  {path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule'}
 
   
   // { path: 'new-task-modal', loadChildren: './new-task-modal/new-task-modal.module#NewTaskModalPageModule' },

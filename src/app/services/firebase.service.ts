@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
+import { Observable } from 'rxjs';
+
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
-
+  itemsCollection: AngularFirestoreCollection<any>;
+  items: Observable<any[]>;
   private snapshotChangesSubscription: any;
 
   constructor(
@@ -182,5 +185,44 @@ deletePedido(pedidoKey){
     )
   })
 }
+
+
+//funciones de usuario
+getUsersData() {
+   
+  this.itemsCollection= this.afs.collection('usuarios');
+  this.items= this.itemsCollection.valueChanges({idField: 'id'});
+ //  this.items.forEach( item =>{
+    // console.log(item)
+// });
+
+ return this.items;
+}
+
+inactivarUsuario(userkey){
+  console.log(this.afs.collection('usuarios').doc(userkey))
+ 
+ }
+ 
+ editUsuario(value, uid){
+   this.afs.collection("usuarios").doc(uid).update({
+             nombre: value.nombre,
+             apellido: value.apellido,
+             cedula: value.cedula,
+             telefono: value.telefono,
+             rolAdmin:value.rolAdmin
+ });
+ 
+ }
+ 
+ quitarAdmin(uid){
+   console.log('quitando admin')
+   this.afs.collection("usuarios").doc(uid).update({
+ 
+     rolAdmin:false
+ });
+ 
+ }
+ 
 
 }
