@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { CartModalPage } from './cart-modal.page';
 
 describe('CartModalPage', () => {
@@ -10,7 +10,7 @@ describe('CartModalPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CartModalPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(),  RouterTestingModule.withRoutes([])]
     }).compileComponents();
 
     fixture = TestBed.createComponent(CartModalPage);
