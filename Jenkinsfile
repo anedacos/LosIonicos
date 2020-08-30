@@ -3,16 +3,17 @@ pipeline {
     //   environment {
     //      PATH='/usr/local/bin:/usr/bin:/bin'
     //   }
-  
-   stage('NPM Setup') {
+   stages {
+      stage('NPM Setup') {
       steps {
          bat 'npm install'
+      }
    }
-   
-    stage('run tests') {
-      steps {
-         bat 'ng test '
+    stage('Integration tests') {
+   steps {
+      bat 'ng test'
    }
+  }
 
    stage('Android Build') {
    steps {
