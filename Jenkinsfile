@@ -3,18 +3,16 @@ pipeline {
     //   environment {
     //      PATH='/usr/local/bin:/usr/bin:/bin'
     //   }
-   stages {
-      stage('NPM Setup') {
+  
+   stage('NPM Setup') {
       steps {
          bat 'npm install'
-      }
    }
-
-//    stage('IOS Build') {
-//    steps {
-//       sh 'ionic cordova build ios --release'
-//      } 
-//   }
+   
+    stage('run tests') {
+      steps {
+         bat 'ng test '
+   }
 
    stage('Android Build') {
    steps {
@@ -22,11 +20,7 @@ pipeline {
    }
   }
 
-//    stage('APK Sign') {
-//    steps {
-//       sh 'jarsigner -storepass your_password -keystore keys/yourkey.keystore platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk nameApp'
-//    }
-//    }
+
 
    stage('Stage Web Build') {
       steps {
