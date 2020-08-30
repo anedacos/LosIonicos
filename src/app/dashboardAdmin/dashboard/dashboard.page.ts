@@ -4,6 +4,8 @@ import { Component, OnInit, ViewChild , } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import{UsersPage} from '../Users/users.page'
 import { Router, RouterEvent } from '@angular/router';
+import { AuthService } from "../../services/auth.service";
+
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.page.html',
@@ -15,30 +17,45 @@ import { Router, RouterEvent } from '@angular/router';
     pages: {
       title: string;
       url: string;
+      icon:string;
     }[] = [
       {
         title: 'Usuarios',
-        url: '/datausers', //link para productos
+        icon  : "home",
+        url: '/dashboard/dashboard/datausers', //link para productos
+       
       },
       {
         title: 'Usuarios', 
+        icon  : "home",
         url: '/datausers',//link para pedidos
+        
       },
       {
         title: 'Usuarios',
+        icon  : "home",
         url: '/datausers',// link para usuarios
       }
     ];
   
     selectedPath: string = '';
-    constructor(private router: Router) {
+    constructor(private router: Router, private authService: AuthService,) {
       this.router.events.subscribe((event: RouterEvent) => {
         this.selectedPath = event.url;
       });
     }
 
 
-
+    logout() {
+      this.authService.doLogout().then(
+        (res) => {
+          this.router.navigate(["/login"]);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
 
 
 

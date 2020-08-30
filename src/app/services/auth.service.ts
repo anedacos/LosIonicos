@@ -7,9 +7,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: "root",
 })
 export class AuthService {
+
   constructor(
     private firebaseService: FirebaseService,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    public afs: AngularFirestore,
   ) {}
 
   doRegister(value) {
@@ -78,5 +80,20 @@ export class AuthService {
           reject();
         });
     });
+  }
+
+
+  getUserInfo(){
+    //firebase.auth().currentUser.uid
+   this.afs.collection('usuarios').doc(firebase.auth().currentUser.uid).valueChanges().subscribe((data: any[]) => 
+    
+    
+    { 
+         return data;
+    }
+    
+    
+    ); 
+    
   }
 }

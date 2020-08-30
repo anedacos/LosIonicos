@@ -223,6 +223,22 @@ inactivarUsuario(userkey){
  });
  
  }
+ getInfoUser(){
+
+  return new Promise<any>((resolve, reject) => {
+    this.afAuth.user.subscribe(currentUser => {
+      if(currentUser){
+        this.snapshotChangesSubscription = this.afs.doc<any>('usuarios/' + currentUser.uid).valueChanges()
+        .subscribe(snapshots => {
+          resolve(snapshots);
+        }, err => {
+          reject(err)
+        })
+      }
+    })
+  });
+ }
+
  
 
 }

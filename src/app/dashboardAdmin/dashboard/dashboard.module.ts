@@ -6,11 +6,23 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPage } from './dashboard.page';
 
 const routes: Routes = [
-    {
-      path: '',
-      component: DashboardPage
-    }
-  ];
+  {
+    path: 'dashboard',
+    component: DashboardPage,
+    children:[
+      {path: 'datausers', 
+      loadChildren: '../Users/users.module#UsersPageModule'},
+   
+    
+    ],
+
+
+  },
+  {
+    path: '',
+    redirectTo: 'dashboard/datausers'
+  }
+];
   @NgModule({
     imports: [
       CommonModule,

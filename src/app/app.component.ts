@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { FirebaseService } from "./services/firebase.service";
 
 import { Router } from '@angular/router';
 
@@ -14,12 +15,14 @@ import { Router } from '@angular/router';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  rolAdmin: boolean;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private afs: FirebaseService,
   ) {
     this.initializeApp();
   }
@@ -28,7 +31,44 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.afAuth.user.subscribe(user => {
         if(user){
-          this.router.navigate(["/home"]);
+
+          this.afs.getInfoUser().then(
+            (val) => { 
+              
+              this.rolAdmin=val.rolAdmin;
+              if(this.rolAdmin){
+                console.log('es admin va al dashboard');
+                this.router.navigate(["/dashboard"])
+                
+              }
+              else{
+    
+                console.log('es cliente')
+              
+                this.router.navigate(["/home"])
+               
+              };
+             // console.log(this.rolAdmin)
+              //this.activeUserData = val; }
+            }
+          );
+         
+
+         /* if(this.rolAdmin){
+            console.log('es admin va al dashboard');
+            this.router.navigate(["/dashboard"])
+            
+          }
+          else{
+
+            console.log('es cliente')
+          
+            this.router.navigate(["/home"])
+           
+          };
+*/
+          //this.router.navigate(["/home"]);
+          
         } else {
           this.router.navigate(["/login"]);
         }

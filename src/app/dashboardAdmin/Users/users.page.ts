@@ -3,10 +3,10 @@ import { Component, OnInit, ViewChild , } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {  AlertController } from '@ionic/angular';
-import { FirebaseService} from '../services/firebase.service';
+import { FirebaseService} from '../../services/firebase.service';
 import { Observable } from 'rxjs';
 
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 @Component({
     selector: 'app-users',

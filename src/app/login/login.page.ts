@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-
+import { FirebaseService } from "../services/firebase.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,6 +12,7 @@ export class LoginPage implements OnInit {
 
   validations_form: FormGroup;
   errorMessage: string = '';
+  rolAdmin: boolean;
 
   validation_messages = {
    'email': [
@@ -27,6 +28,7 @@ export class LoginPage implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
+    private afs: FirebaseService,
     private router: Router
   ) { }
 
@@ -46,7 +48,28 @@ export class LoginPage implements OnInit {
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
-      this.router.navigate(["/home"]);
+      //this.authService.isAdmin();
+      console.log(this.afs.getInfoUser().then(
+        (val) => { 
+          
+          this.rolAdmin=val.rolAdmin;
+          if(this.rolAdmin){
+            console.log('es admin va al dashboard');
+            this.router.navigate(["/dashboard"])
+            
+          }
+          else{
+
+            console.log('es cliente')
+          
+            this.router.navigate(["/home"])
+           
+          };
+          console.log(this.rolAdmin)
+          //this.activeUserData = val; }
+        }
+      ));
+      
     }, err => {
       this.errorMessage = err.message;
       console.log(err)
