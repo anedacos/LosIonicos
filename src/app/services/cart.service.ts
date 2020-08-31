@@ -13,16 +13,16 @@ export interface Product {
 })
 export class CartService {
   data: Product[] = [
-    { id: 0, name: "Sprite", price: 0.5, amount: 1 },
-    { id: 1, name: "Coca Cola", price: 0.75, amount: 1 },
-    { id: 2, name: "Bebida Sabor a limón", price: 0.75, amount: 1 },
-    { id: 3, name: "Saviloe", price: 0.75, amount: 1 },
+    { id: 0, name: "Coca Cola", price: 0.75, amount: 1 },
+    { id: 1, name: "Agua YAKU 1L", price: 0.75, amount: 1 },
+    { id: 2, name: "Agua YAKU galon", price: 1.5, amount: 1 },
+    { id: 3, name: "Bebida Sabor naranja", price: 0.75, amount: 1 },
     { id: 4, name: "Volt Yellow", price: 0.75, amount: 1 },
-    { id: 5, name: "Agua YAKU Botellón", price: 6.51, amount: 1 },
-    { id: 6, name: "Agua YAKU 1L", price: 0.75, amount: 1 },
-    { id: 7, name: "Agua YAKU galon", price: 1.5, amount: 1 },
-    { id: 8, name: "Bebida Sabor  naranja", price: 0.75, amount: 1 },
-    { id: 9, name: "Vive 100", price: 1, amount: 1 },
+    { id: 5, name: "Saviloe", price: 0.75, amount: 1 },
+    { id: 6, name: "Bebida Sabor a limón", price: 0.75, amount: 1 },
+    { id: 7, name: "Vive 100", price: 1, amount: 1 },
+    { id: 8, name: "Sprite", price: 0.5, amount: 1 },
+    { id: 9, name: "Agua YAKU Botellón", price: 6.51, amount: 1 },
   ];
 
   private cart = [];

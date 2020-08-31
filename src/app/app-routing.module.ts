@@ -25,8 +25,8 @@ const routes: Routes = [
   //{path: 'datausers', loadChildren: './Users/users.module#UsersPageModule'},
   {path: 'dashboard', loadChildren: './dashboardAdmin/dashboard/dashboard.module#DashboardPageModule'},
   //{
-   // path: 'pedidos-admin',
-   // loadChildren: "./pedidos-admin/pedidos-admin.module#PedidosAdminPageModule"
+    //path: 'pedidos-admin',
+    //loadChildren: "./pedidos-admin/pedidos-admin.module#PedidosAdminPageModule"
   //}
 
 
