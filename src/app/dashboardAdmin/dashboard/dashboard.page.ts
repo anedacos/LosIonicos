@@ -26,7 +26,7 @@ import { AuthService } from "../../services/auth.service";
        
       },
       {
-        title: 'Productos', 
+        title: 'Crear producto', 
         icon  : "home",
         url: '/dashboard/dashboard/products',//link para productos
       },

@@ -6,14 +6,14 @@
 		 Productos
       </ion-button>
 	</ion-buttons>
-    <ion-title>Pedidos realizados</ion-title>
+    <ion-title>Pedidos Administrador</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="items" class="list-mini-content" padding>
   <div *ngIf="items.length > 0" class="list-mini">
     <ion-list>
-      <ion-item *ngFor="let item of items">
+      <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
         <ion-thumbnail slot="start">
           <img [src]="item.payload.doc.data().image">
         </ion-thumbnail>
@@ -21,6 +21,7 @@
         <ion-label>Total: {{item.payload.doc.data().total}}</ion-label>
         <ion-label>Direccion: {{item.payload.doc.data().direccion}}</ion-label>
         <ion-label>{{item.payload.doc.data().estado}}</ion-label>
+        <ion-button fill="clear" slot="end">Cambiar Estado</ion-button>
       </ion-item>
     </ion-list>
   </div>

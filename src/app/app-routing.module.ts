@@ -13,10 +13,6 @@ const routes: Routes = [
     loadChildren: "./details/details.module#DetailsPageModule",
   },
   { path: "home", loadChildren: "./home/home.module#HomePageModule" },
-  {
-    path: "new-task",
-    loadChildren: "./new-task/new-task.module#NewTaskPageModule",
-  },
   { path: "cart-modal", loadChildren: "./pages/cart-modal/cart-modal.module" },
   {
     path: "checkout",
@@ -27,7 +23,12 @@ const routes: Routes = [
     loadChildren: "./pedidos/pedidos.module#PedidosPageModule"
   },
   //{path: 'datausers', loadChildren: './Users/users.module#UsersPageModule'},
-  {path: 'dashboard', loadChildren: './dashboardAdmin/dashboard/dashboard.module#DashboardPageModule'}
+  {path: 'dashboard', loadChildren: './dashboardAdmin/dashboard/dashboard.module#DashboardPageModule'},
+  {
+    path: 'pedidos-admin',
+    loadChildren: "./pedidos-admin/pedidos-admin.module#PedidosAdminPageModule"
+  }
+
 
   
   // { path: 'new-task-modal', loadChildren: './new-task-modal/new-task-modal.module#NewTaskModalPageModule' },
