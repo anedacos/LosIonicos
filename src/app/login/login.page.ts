@@ -51,7 +51,6 @@ export class LoginPage implements OnInit {
       //this.authService.isAdmin();
       console.log(this.afs.getInfoUser().then(
         (val) => { 
-          
           this.rolAdmin=val.rolAdmin;
           if(this.rolAdmin){
             console.log('es admin va al dashboard');
@@ -59,11 +58,8 @@ export class LoginPage implements OnInit {
             
           }
           else{
-
-            console.log('es cliente')
-          
-            this.router.navigate(["/home"])
-           
+            console.log('es cliente');
+            this.router.navigate(["/home"]);
           };
           console.log(this.rolAdmin)
           //this.activeUserData = val; }

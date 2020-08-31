@@ -37,6 +37,7 @@ export class AppComponent {
               
               this.rolAdmin=val.rolAdmin;
               if(this.rolAdmin){
+
                 console.log('es admin va al dashboard');
                 this.router.navigate(["/dashboard"])
                 
@@ -44,7 +45,7 @@ export class AppComponent {
               else{
     
                 console.log('es cliente')
-              
+                console.log(this.rolAdmin);
                 this.router.navigate(["/home"])
                
               };
