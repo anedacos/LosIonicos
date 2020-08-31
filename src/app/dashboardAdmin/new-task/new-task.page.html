@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nuevo Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <ion-row no-padding>
+      <ion-col size="6" offset="3">
+        <img [src]="image" alt="this is the image"/>
+      </ion-col>
+    </ion-row>
+    <!--<ion-row no-padding>
+      <ion-col size="6" offset="3">
+        <ion-button fill="outline" expand="block" size="small" (click)="openImagePicker()">Change Picture</ion-button>
+      </ion-col>
+    </ion-row>-->
+  </div>
+  <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+    <ion-item>
+      <ion-label position="floating" color="primary">Nombre</ion-label>
+      <ion-input type="text" formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Descripcion</ion-label>
+      <ion-input type="text" formControlName="descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Precio</ion-label>
+      <ion-input type="text" formControlName="precio"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Stock</ion-label>
+      <ion-input type="text" formControlName="stock"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Categoria</ion-label>
+      <ion-input type="text" formControlName="categoria"></ion-input>
+    </ion-item>
+    <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Crear</ion-button>
+  </form>
+</ion-content>
