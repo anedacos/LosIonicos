@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild , } from '@angular/core';
 //import { NavController, ToastController, NavParams } from "ionic-angular";
 //import { BarcodeScanner } from "@ionic-native/barcode-scanner";
-import { MenuController } from '@ionic/angular';
-import{UsersPage} from '../Users/users.page'
 import { Router, RouterEvent } from '@angular/router';
 import { AuthService } from "../../services/auth.service";
 
@@ -19,12 +17,7 @@ import { AuthService } from "../../services/auth.service";
       url: string;
       icon:string;
     }[] = [
-      {
-        title: 'Usuarios',
-        icon  : "home",
-        url: '/dashboard/dashboard/datausers', //link para productos
-       
-      },
+      
       {
         title: 'Crear producto', 
         icon  : "home",
@@ -33,8 +26,15 @@ import { AuthService } from "../../services/auth.service";
       {
         title: 'Pedidos',
         icon  : "home",
-        url: '/datausers',// link para usuarios
-      }
+        url: '/dashboard/dashboard/pedidos-admin',// link para usuarios
+      },
+      {
+        title: 'Usuarios',
+        icon  : "home",
+        url: '/dashboard/dashboard/datausers', //link para productos
+       
+      },
+      
     ];
   
     selectedPath: string = '';

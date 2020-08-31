@@ -14,6 +14,15 @@ const routes: Routes = [
       loadChildren: '../Users/users.module#UsersPageModule'},
       {path: 'products', 
       loadChildren: '../new-task/new-task.module#NewTaskPageModule'},
+      {
+         path: 'pedidos-admin',
+        loadChildren: "../pedidos-admin/pedidos-admin.module#PedidosAdminPageModule"
+       },
+       {
+        path:'',
+        redirectTo: '/dashboard/dashboard/products'
+
+       }
     
     ],
   },
