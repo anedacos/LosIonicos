@@ -9,12 +9,7 @@ pipeline {
          bat 'npm install'
       }
    }
-    stage('Integration tests') {
-   steps {
-      bat 'ng test'
-   }
-  }
-
+    
    stage('Android Build') {
    steps {
       bat 'ionic cordova build android --release'
