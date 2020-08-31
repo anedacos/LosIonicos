@@ -18,17 +18,13 @@ const routes: Routes = [
          path: 'pedidos-admin',
         loadChildren: "../pedidos-admin/pedidos-admin.module#PedidosAdminPageModule"
        },
-       {
-        path:'',
-        redirectTo: '/dashboard/dashboard/products'
-
-       }
+       
     
     ],
   },
   {
     path: '',
-    redirectTo: 'dashboard/datausers'
+    redirectTo: '/dashboard/dashboard/products'
   }
 ];
   @NgModule({
