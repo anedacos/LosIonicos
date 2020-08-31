@@ -12,11 +12,10 @@ const routes: Routes = [
     children:[
       {path: 'datausers', 
       loadChildren: '../Users/users.module#UsersPageModule'},
-   
+      {path: 'products', 
+      loadChildren: '../new-task/new-task.module#NewTaskPageModule'},
     
     ],
-
-
   },
   {
     path: '',

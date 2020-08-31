@@ -26,13 +26,12 @@ import { AuthService } from "../../services/auth.service";
        
       },
       {
-        title: 'Usuarios', 
+        title: 'Productos', 
         icon  : "home",
-        url: '/datausers',//link para pedidos
-        
+        url: '/dashboard/dashboard/products',//link para productos
       },
       {
-        title: 'Usuarios',
+        title: 'Pedidos',
         icon  : "home",
         url: '/datausers',// link para usuarios
       }
