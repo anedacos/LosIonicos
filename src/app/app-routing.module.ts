@@ -18,16 +18,16 @@ const routes: Routes = [
     path: "checkout",
     loadChildren:"./checkout/checkout.module#CheckoutModule",
   },
-  //{
-    //path: 'pedidos',
-    //loadChildren: "./pedidos/pedidos.module#PedidosPageModule"
-  //},
+  {
+    path: 'pedidos',
+    loadChildren: "./pedidos/pedidos.module#PedidosPageModule"
+  },
   //{path: 'datausers', loadChildren: './Users/users.module#UsersPageModule'},
   {path: 'dashboard', loadChildren: './dashboardAdmin/dashboard/dashboard.module#DashboardPageModule'},
-  {
-    path: 'pedidos-admin',
-    loadChildren: "./pedidos-admin/pedidos-admin.module#PedidosAdminPageModule"
-  }
+  //{
+    //path: 'pedidos-admin',
+    //loadChildren: "./pedidos-admin/pedidos-admin.module#PedidosAdminPageModule"
+  //}
 
 
   
