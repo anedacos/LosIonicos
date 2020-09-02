@@ -63,7 +63,8 @@ export class DetailsPage implements OnInit {
     .then(
       res => {
         this.router.navigate(["/dashboard/dashboard/pedidos-admin"]);
-      }
+      },
+      err => console.log(err)
     )
   }
 
