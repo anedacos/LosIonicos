@@ -50,7 +50,7 @@ export class CheckoutComponent implements OnInit {
       estado:"Preparando",
       image:  "./assets/imgs/buy-cart.png"
     }
-    this.firebaseService.createPedido(data)
+    this.firebaseService.completarRegistroPedido(data)
     .then(
       res => {
         this.router.navigate(["/pedidos"]);

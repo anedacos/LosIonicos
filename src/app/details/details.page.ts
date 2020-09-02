@@ -40,6 +40,7 @@ export class DetailsPage implements OnInit {
      if (data) {
        this.item = data;
        this.image = this.item.image;
+       this.item.cliente;
      }
     })
     this.validations_form = this.formBuilder.group({
@@ -47,7 +48,6 @@ export class DetailsPage implements OnInit {
       direccion: new FormControl(this.item.direccion, Validators.required),
       total: new FormControl(this.item.total, Validators.required),
       estado: new FormControl(this.item.estado, Validators.required)
-
     });
   }
 
@@ -57,7 +57,7 @@ export class DetailsPage implements OnInit {
       direccion: value.direccion,
       total:value.total,
       estado:value.estado,
-      image: this.image
+      image: this.image,
     }
     this.firebaseService.updatePedido(this.item.id,data)
     .then(
@@ -81,7 +81,8 @@ export class DetailsPage implements OnInit {
         {
           text: 'Yes',
           handler: () => {
-            this.firebaseService.deletePedido(this.item.id)
+            this.getData
+            this.firebaseService.completarEliminarPedido(this.item.id,this.item.cliente)
             .then(
               res => {
                 this.router.navigate(["/pedidos"]);

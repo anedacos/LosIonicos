@@ -20,8 +20,8 @@
         <ion-thumbnail slot="start">
           <img [src]="item.payload.doc.data().image">
         </ion-thumbnail>
-        <ion-label>Cliente:{{item.payload.doc.data().nombre}}</ion-label>
-        <ion-label>Total: {{item.payload.doc.data().total}}</ion-label>
+        <ion-label>{{item.payload.doc.data().nombre}}</ion-label>
+        <ion-label> Total: {{item.payload.doc.data().total}}</ion-label>
         <ion-label>Direccion: {{item.payload.doc.data().direccion}}</ion-label>
         <ion-label>{{item.payload.doc.data().estado}}</ion-label>
         <ion-button fill="clear" slot="end">Cambiar Estado</ion-button>

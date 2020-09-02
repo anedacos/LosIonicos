@@ -124,10 +124,10 @@ export class FirebaseService {
   }
 
   //CRUD Pedido
-  createPedido(value) {
+  createPedido(value,id) {
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('pedidos').add({
+      this.afs.collection('people').doc(currentUser.uid).collection('pedidos').doc(id).set({
         image: value.image,
         nombre: value.nombre,
         direccion: value.direccion,
@@ -140,6 +140,36 @@ export class FirebaseService {
         )
     })
   }
+
+  registerPedido(value,id) {
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('pedidos').doc(id).set({
+        cliente:currentUser.uid,
+        image: value.image,
+        nombre: value.nombre,
+        direccion: value.direccion,
+        total: value.total,
+        estado: value.estado
+      })
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+    })
+  }
+
+  completarRegistroPedido(value){
+    return new Promise<any>((resolve, reject) => {
+      let document_id = this.afs.createId();
+      this.createPedido(value,document_id)
+      this.registerPedido(value,document_id)
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+  })
+}
 
   getPedidos() {
     return new Promise<any>((resolve, reject) => {
@@ -155,7 +185,7 @@ export class FirebaseService {
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('pedidos').snapshotChanges();//Debo hacer esto para cada usuario
+          this.snapshotChangesSubscription = this.afs.collection('pedidos').snapshotChanges();//Debo hacer esto para cada usuario
           resolve(this.snapshotChangesSubscription);
         }
       })
@@ -164,16 +194,13 @@ export class FirebaseService {
 
   getPedido(pedidoId) {
     return new Promise<any>((resolve, reject) => {
-      this.afAuth.user.subscribe(currentUser => {
-        if (currentUser) {
-          this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/pedidos/' + pedidoId).valueChanges()
+
+          this.snapshotChangesSubscription = this.afs.doc<any>('/pedidos/' + pedidoId).valueChanges()
             .subscribe(snapshots => {
               resolve(snapshots);
             }, err => {
               reject(err)
             })
-        }
-      })
     });
   }
 
@@ -189,10 +216,32 @@ export class FirebaseService {
   }
 
 
-  deletePedido(pedidoKey) {
+  deletePedido(pedidoKey,id_user) {
     return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('pedidos').doc(pedidoKey).delete()
+      let currentUser = id_user;
+      this.afs.collection('people').doc(currentUser).collection('pedidos').doc(pedidoKey).delete()
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+    })
+  }
+
+  registrarEliminar(pedidoKey){
+    return new Promise<any>((resolve, reject) => {
+      this.afs.collection('pedidos').doc(pedidoKey).delete()
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+    })
+
+  }
+
+  completarEliminarPedido(pedidoKey,id_user){
+    return new Promise<any>((resolve, reject) => {
+        this.deletePedido(pedidoKey,id_user)
+        this.registrarEliminar(pedidoKey)
         .then(
           res => resolve(res),
           err => reject(err)
