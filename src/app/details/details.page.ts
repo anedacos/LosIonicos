@@ -59,10 +59,10 @@ export class DetailsPage implements OnInit {
       estado:value.estado,
       image: this.image,
     }
-    this.firebaseService.updatePedido(this.item.id,data)
+    this.firebaseService.completarActualizarPedido(this.item.id,data,this.item.cliente)
     .then(
       res => {
-        this.router.navigate(["/pedidos"]);
+        this.router.navigate(["/dashboard/dashboard/pedidos-admin"]);
       }
     )
   }

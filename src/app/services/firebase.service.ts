@@ -204,10 +204,31 @@ export class FirebaseService {
     });
   }
 
-  updatePedido(pedidoKey, value) {
+  updatePedido(pedidoKey, value,cliente) {
     return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('pedidos').doc(pedidoKey).set(value)
+      let currentUser = cliente;
+      this.afs.collection('people').doc(currentUser).collection('pedidos').doc(pedidoKey).set(value)
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+    })
+  }
+
+  registrarUpdatePedido(pedidoKey,value) {
+    return new Promise<any>((resolve, reject) => {
+      this.afs.collection('pedidos').doc(pedidoKey).update(value)
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+    })
+  }
+
+  completarActualizarPedido(pedidoKey,value,id_user){
+    return new Promise<any>((resolve, reject) => {
+      this.registrarUpdatePedido(pedidoKey,value)
+      this.updatePedido(pedidoKey,value,id_user)
         .then(
           res => resolve(res),
           err => reject(err)
