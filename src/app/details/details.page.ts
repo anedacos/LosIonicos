@@ -85,7 +85,7 @@ export class DetailsPage implements OnInit {
             this.firebaseService.completarEliminarPedido(this.item.id,this.item.cliente)
             .then(
               res => {
-                this.router.navigate(["/pedidos"]);
+                this.router.navigate(["/dashboard/dashboard/pedidos-admin"]);
               },
               err => console.log(err)
             )
